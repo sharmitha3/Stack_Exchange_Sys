@@ -87,7 +87,7 @@ public class Main {
                     if (topAnswers.isEmpty()) System.out.println("No answers found with votes >= " + minAVotes);
                     else topAnswers.forEach(Answers::print);
                 }
-                case 6 -> { // Add new question
+                case 6 -> { 
                     System.out.print("Enter title: ");
                     String title = scanner.nextLine();
                     System.out.print("Enter body: ");
@@ -98,25 +98,25 @@ public class Main {
                     int votes = scanner.nextInt();
                     System.out.print("Enter initial views: ");
                     int views = scanner.nextInt();
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine(); 
                     Question newQ = new Question(nextQuestionId++, title, body, tags, votes, views);
                     questionRepo.addQuestion(newQ);
                     System.out.println("Question added successfully!");
                 }
-                case 7 -> { // Add new answer
+                case 7 -> { 
                     System.out.print("Enter question ID to answer: ");
                     int qid = scanner.nextInt();
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine(); 
                     System.out.print("Enter answer body: ");
                     String body = scanner.nextLine();
                     System.out.print("Enter votes: ");
                     int votes = scanner.nextInt();
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine(); 
                     Answers newA = new Answers(nextAnswerId++, qid, body, votes);
                     answerRepo.addAnswer(newA);
                     System.out.println("Answer added successfully!");
                 }
-                case 8 -> { // Questions with no answers
+                case 8 -> { 
                     System.out.println("==== Questions with No Answers ====");
                     List<Question> allQuestions = questionService.getAllQuestions();
                     for (Question q : allQuestions) {
