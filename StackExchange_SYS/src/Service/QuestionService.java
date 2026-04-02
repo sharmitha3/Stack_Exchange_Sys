@@ -17,9 +17,7 @@ public class QuestionService {
         return repository.getAllQuestions();
     }
 
-    // NEW: Search by multiple tags, case-insensitive
     public List<Question> getQuestionsByTags(String inputTags) {
-        // split user input into individual tags, trim spaces, ignore case
         String[] searchTags = inputTags.toLowerCase().split(",");
 
         return repository.getAllQuestions().stream()
@@ -35,7 +33,6 @@ public class QuestionService {
                 .collect(Collectors.toList());
     }
 
-    // Other methods unchanged
     public List<Question> getTopVotedQuestions(int minVotes) {
         return repository.getAllQuestions().stream()
                 .filter(q -> q.getVotes() >= minVotes)
